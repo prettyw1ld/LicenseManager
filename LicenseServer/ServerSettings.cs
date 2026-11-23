@@ -24,19 +24,11 @@ public class ServerSettings
     public int ConfirmTimeoutSeconds { get; set; } = 30;
 
     public string ConnectionString { get; set; } =
-        "Server=localhost;Database=LicenseManager;Trusted_Connection=True;TrustServerCertificate=True";
+        "Server=DESKTOP-0M79SAB\\SQLEXPRESS;Database=LicenseManager;Trusted_Connection=True;TrustServerCertificate=True";
 
     public static ServerSettings Load()
     {
-        try
-        {
-            if (File.Exists(FileName))
-                return JsonSerializer.Deserialize<ServerSettings>(File.ReadAllText(FileName)) ?? new ServerSettings();
-        }
-        catch
-        {
-            // повреждённый файл настроек — просто берём значения по умолчанию
-        }
+       
         return new ServerSettings();
     }
 
